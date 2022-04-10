@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const { Pool } = require('pg');
 const { password } = require('pg/lib/defaults');
 require('dotenv').config();
-console.log(process.env);
+
 const connectionString = `postgres://${process.env.USERNAME}:${process.env.PASSWORD}@${process.env.HOST}:${process.env.DATABASEPORT}/${process.env.DATABASE}`;
 console.log(connectionString);
 
