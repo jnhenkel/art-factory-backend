@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/register', (req,res) => {
-    let name = req.body.firstName;
+    let firstName = req.body.firstName;
     let email = req.body.email;
     let password = req.body.password;
     store.addCustomer(email, firstName, password)
