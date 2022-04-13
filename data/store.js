@@ -42,7 +42,7 @@ let store = {
         })
         .catch(e => {
             console.log(e);
-            return {valid: false, message: 'There was an error checking email.'};
+            return {valid: false, message: 'There was an error checking credentials.'};
         });
     }
 }
