@@ -7,7 +7,7 @@ const port = process.env.PORT || 4002;
 
 //middlewares
 app.use(express.json());
-application.use(cors());
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.status(200).json({done: true, message: 'This is the backend for the art factory'});
