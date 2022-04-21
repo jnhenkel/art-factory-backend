@@ -44,6 +44,19 @@ let store = {
             console.log(e);
             return {valid: false, message: 'There was an error checking credentials.'};
         });
+    },
+
+    postScore: (email, score, date) => {
+        let query = `select u.id as user_id from art_factory.users u where u.email = $1`;
+        pool.query(query, [email])
+        .then(x => {
+            if (x.rows.length > 0) {
+                let user_id = x.rows[0].user_id;
+                let query2 = `insert into art_factory.score (user_id, date, score) values ($1, $2, $3)`;
+                return pool.query(query2, [Number(user_id), date, score])
+            }
+
+        })
     }
 }
 

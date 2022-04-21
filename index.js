@@ -40,6 +40,15 @@ app.post('/login', (req,res) => {
         console.log(e);
         res.status(500).json({done: false, message: 'There was an error'});
     });
+});
+
+app.post('/score', (req,res) => {
+    let email = req.body.email;
+    let score = req.body.score;
+    let date = new Date();
+    date = date.toDateString();
+    store.postScore(email,score,date)
+    res.status(200).json({ done: true, message: 'score added' });
 })
 
 app.listen(port, () => {
