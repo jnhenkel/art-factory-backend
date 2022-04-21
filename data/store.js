@@ -47,6 +47,8 @@ let store = {
     },
 
     postScore: (email, score, date) => {
+        //let query2 = `insert into art_factory.score (user_id, date, score) values ($1, $2, $3)`;
+        //pool.query(query2, [email, date, score])
         let query = `select u.id as user_id from art_factory.users u where u.email = $1`;
         pool.query(query, [email])
         .then(x => {
@@ -61,7 +63,7 @@ let store = {
         .catch(e => {
             console.log(e);
             alert('there was an error');
-        })
+        }) 
     }
 }
 
