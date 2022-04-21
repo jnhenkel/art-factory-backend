@@ -50,14 +50,17 @@ let store = {
         let query2 = `insert into art_factory.score (user_email, date, score) values ($1, $2, $3)`;
         return pool.query(`insert into art_factory.score (user_email, date, score) values ($1, $2, $3)`, [email, date, score])
         .then(x => {
-            console.log(x)}
+            console.log(x);
+            return {done: true};
+        }
         )
         .catch(e => {
             console.log(e);
             //alert('there was an error');
+            return {done:false};
         })
 
-        
+
         /*let query = `select u.id as user_id from art_factory.users u where u.email = $1`;
         pool.query(query, [email])
         .then(x => {

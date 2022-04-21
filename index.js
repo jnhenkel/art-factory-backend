@@ -49,7 +49,14 @@ app.post('/score', (req,res) => {
     let date = new Date();
     date = date.toDateString();
     store.postScore(email,score,date)
-    res.status(200).json({ done: true, message: 'score added' });
+    .then(x => {
+        if (x.done) {
+        res.status(200).json({ done: true, message: 'score added' });
+        } else {
+            res.status(500).send();
+        }
+    })
+    
 })
 
 app.listen(port, () => {
