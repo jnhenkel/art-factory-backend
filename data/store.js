@@ -54,9 +54,10 @@ let store = {
         )
         .catch(e => {
             console.log(e);
-            alert('there was an error');
+            //alert('there was an error');
         })
 
+        
         /*let query = `select u.id as user_id from art_factory.users u where u.email = $1`;
         pool.query(query, [email])
         .then(x => {
