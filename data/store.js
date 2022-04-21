@@ -51,11 +51,16 @@ let store = {
         pool.query(query, [email])
         .then(x => {
             if (x.rows.length > 0) {
+                console.log('x: ',x);
                 let user_id = x.rows[0].user_id;
                 let query2 = `insert into art_factory.score (user_id, date, score) values ($1, $2, $3)`;
                 return pool.query(query2, [Number(user_id), date, score])
             }
 
+        })
+        .catch(e => {
+            console.log(e);
+            alert('there was an error');
         })
     }
 }
