@@ -79,7 +79,7 @@ let store = {
     },
 
     getScore: (email) => {
-        return pool.query(`select s.score from art_factory.score s where user_email = $1`, [email])
+        return pool.query(`select * from art_factory.score s where user_email = $1`, [email])
     }
 }
 

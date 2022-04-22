@@ -64,7 +64,7 @@ app.get('/score/:email', (req,res) => {
     store.getScore(email)
     .then(x => {
         if (x.rows.length > 0) {
-            res.status(200).json({done: true, result: x, message: 'Score was found'});
+            res.status(200).json({done: true, result: x.rows, message: 'Score was found'});
         } else {
             res.status(404).json({done: false, result: undefined, message: 'The score was not found' });
         }
