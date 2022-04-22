@@ -46,17 +46,29 @@ app.post('/login', (req,res) => {
 app.post('/score', (req,res) => {
     let email = req.body.email;
     let score = req.body.score;
+    let art_url = req.body.art_url;
     let date = new Date();
     date = date.toDateString();
-    store.postScore(email,score,date)
+    store.postScore(email,score,date, art_url)
     .then(x => {
         if (x.done) {
         res.status(200).json({ done: true, message: 'score added' });
         } else {
-            res.status(500).send();
+            res.status(500).json({done: false});
+        }
+    });
+});
+
+app.get('/score/:email', (req,res) => {
+    let email = req.params.email;
+    store.getScore(email)
+    .then(x => {
+        if (x.rows.length > 0) {
+            res.status(200).json({done: true, result: x, message: 'Score was found'});
+        } else {
+            res.status(404).json({done: false, result: undefined, message: 'The score was not found' });
         }
     })
-    
 })
 
 app.listen(port, () => {

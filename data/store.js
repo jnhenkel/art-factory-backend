@@ -46,9 +46,9 @@ let store = {
         });
     },
 
-    postScore: (email, score, date) => {
-        let query2 = `insert into art_factory.score (user_email, date, score) values ($1, $2, $3)`;
-        return pool.query(`insert into art_factory.score (user_email, date, score) values ($1, $2, $3)`, [email, date, score])
+    postScore: (email, score, date, art_url) => {
+        let query2 = `insert into art_factory.score (user_email, date, score, art_url) values ($1, $2, $3, $4)`;
+        return pool.query(`insert into art_factory.score (user_email, date, score, art_url) values ($1, $2, $3, $4)`, [email, date, score, art_url])
         .then(x => {
             console.log(x);
             return {done: true};
@@ -76,6 +76,10 @@ let store = {
             console.log(e);
             alert('there was an error');
         }) */
+    },
+
+    getScore: (email) => {
+        return pool.query(`select s.score from art_factory.score s where user_email = $1`, [email])
     }
 }
 
