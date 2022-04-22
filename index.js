@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.status(200).json({done: true, message: 'This is the backend for the art factory123'});
+    res.status(200).json({done: true, message: 'This is the backend for the art factory'});
 });
 
 
